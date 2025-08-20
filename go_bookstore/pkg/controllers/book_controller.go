@@ -3,15 +3,14 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"github/paolovls/go_bookstore/pkg/utils"
 	"net/http"
 	"strconv"
 	"strings"
 
-	"github.com/paolovls/go_bookstore/pkg/models"
+	"github.com/paolovls/Prejects/go_bookstore/pkg/models"
+	"github.com/paolovls/Prejects/go_bookstore/pkg/utils"
 
 	"github.com/gorilla/mux"
-	"github.com/paolovls/Prejects/go_bookstore/pkg/models"
 )
 
 var NewBook models.Book
