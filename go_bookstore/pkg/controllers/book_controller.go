@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/paolovls/Prejects/go_bookstore/pkg/models"
-	"github.com/paolovls/Prejects/go_bookstore/pkg/utils"
+	"github.com/paul21ID/Prejects/go_bookstore/pkg/models"
+	"github.com/paul21ID/Prejects/go_bookstore/pkg/utils"
 
 	"github.com/gorilla/mux"
 )

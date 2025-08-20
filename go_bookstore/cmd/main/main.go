@@ -1,12 +1,12 @@
 package main
 
 import (
-	"github/paolovls/prejects/go_bookstore/pkg/routes"
 	"log"
 	"net/http"
 
+	_ "github.com/paul21ID/Prejects/go_bookstore/pkg/routes"
+
 	"github.com/gorilla/mux"
-	_ "github.com/paolovls/Prejects/go_bookstore/pkg/routes"
 )
 
 func main() {
