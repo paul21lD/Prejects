@@ -4,9 +4,9 @@ import (
 	"log"
 	"net/http"
 
-	_ "github.com/paul21ID/Prejects/go_bookstore/pkg/routes"
-
 	"github.com/gorilla/mux"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
+	"github.com/paul21ID/Prejects/go_bookstore/pkg/routes"
 )
 
 func main() {
