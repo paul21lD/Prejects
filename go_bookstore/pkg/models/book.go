@@ -26,20 +26,33 @@ func (b *Book) CreateBook() *Book {
 	return b
 }
 
-func GetAllBooks() []Book {
-	var Books []Book
-	db.Find(&Books)
-	return Books
+func GetAllBooks() ([]Book, error) {
+	var books []Book
+	tx := db.Find(&books)  // tx è *gorm.DB
+	return books, tx.Error // restituisci l'eventuale errore
 }
 
-func GetBookById(Id int64) (*Book, *gorm.DB) {
-	var getBook Book
-	db := db.Where("ID=?", Id).Find(&getBook)
-	return &getBook, db
-}
-
-func DeleteBook(ID int64) Book {
+func GetBookById(Id int64) (*Book, error) {
 	var book Book
-	db.Where("ID=?", ID).Delete(book)
-	return book
+	if err := db.First(&book, Id).Error; err != nil { // usa .Error dal *gorm.DB
+		return nil, err
+	}
+	return &book, nil
+}
+
+func DeleteBook(ID int64) (Book, error) {
+	var b Book
+	// 1) carica il record
+	if err := db.First(&b, ID).Error; err != nil {
+		return Book{}, err // gorm.ErrRecordNotFound o altro
+	}
+	// 2) elimina (soft delete se usi gorm.Model)
+	if err := db.Delete(&b).Error; err != nil {
+		return Book{}, err
+	}
+	return b, nil
+}
+
+func UpdateBook(b *Book) error {
+	return db.Save(b).Error
 }
